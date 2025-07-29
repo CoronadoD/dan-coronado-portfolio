@@ -1,0 +1,534 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Escolha sua fonte */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Container Geral */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header e Navegação */
+header {
+    background: #222;
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .logo img {
+    height: 100px; /* Ajuste a altura conforme necessário */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff6600;
+}
+
+/* Seções Gerais */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 60px;
+    height: 3px;
+    background-color: #ff6600;
+}
+
+/* Botão Padrão */
+.btn {
+    display: inline-block;
+    background: #ff6600;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background: #e65c00;
+}
+
+.hero-section {
+    /* Remova display:flex, align-items, justify-content se o texto não for centralizado verticalmente */
+    /* Se o texto for centralizado no meio da tela abaixo do vídeo, mantenha-os */
+    display: flex; /* Manter para posicionamento flexível */
+    flex-direction: column; /* Coloca os itens em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    height: 80vh; /* Ou ajuste a altura conforme preferir */
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Nova div para o fundo do vídeo */
+.hero-video-background {
+    position: absolute; /* Ocupa todo o espaço do parent */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Garante que o vídeo fique na camada de trás */
+    overflow: hidden; /* Corta o vídeo se ele ultrapassar */
+}
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    /* Removendo display: none aqui, pois o JS irá gerenciar isso */
+}
+/* Nova div para o conteúdo de texto e botão */
+.hero-text-content {
+    position: relative; /* Para garantir que o z-index funcione */
+    z-index: 10; /* Coloca o texto e o botão acima do vídeo */
+    text-align: center;
+    /* Remover background: rgba(0, 0, 0, 0.5); se você não quiser o overlay atrás do texto */
+    background: rgba(0, 0, 0, 0.5); /* Mantido para legibilidade */
+    padding: 20px 40px; /* Ajuste o padding conforme necessário */
+    border-radius: 10px;
+    margin-top: auto; /* Empurra o conteúdo para baixo se usar flex-direction: column */
+    /* OU ajuste o 'top'/'transform' se não usar flexbox no .hero-section */
+}
+
+.hero-text-content h1,
+.hero-text-content p {
+    color: #fff; /* Garante que o texto seja branco */
+    margin-bottom: 15px; /* Espaço entre o título e o parágrafo */
+}
+
+.hero-text-content h1 {
+    font-size: 3.5rem;
+    margin-top: 0; /* Remove margem superior padrão do h1 */
+}
+
+.hero-text-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px; /* Espaço entre o parágrafo e o botão */
+}
+
+/* 3. O conteúdo (texto e botão) - Deve ter Z-INDEX MAIOR */
+.hero-content {
+    position: relative; /* Mantém no fluxo normal, mas permite z-index */
+    z-index: 10; /* **MUITO IMPORTANTE:** Valor maior para ficar ACIMA do vídeo */
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Overlay semi-transparente para o texto */
+    padding: 40px;
+    border-radius: 10px;
+    /* Garanta que não tenha 'height: 0;' ou 'width: 0;' acidentalmente */
+    /* Também verifique se não está com 'opacity: 0;' ou 'visibility: hidden;' */
+}
+
+/* 4. Cor do Texto */
+.hero-content h1,
+.hero-content p {
+    color: #fff; /* Garante que o texto seja branco */
+    margin-bottom: 10px; /* Adicione margem para espaçamento */
+}
+
+.hero-content .btn {
+    color: #fff; /* A cor do botão já é definida no .btn */
+    /* ...outras propriedades do .btn */
+}
+
+
+/* Mostra o vídeo desktop por padrão (telas maiores) */
+.desktop-video {
+    display: block;
+}
+
+/* Esconde o vídeo mobile para telas maiores */
+.mobile-video {
+    display: none;
+}
+
+
+/* Media Query para telas menores (smartphones) - Adaptações para o novo layout */
+@media (max-width: 768px) {
+    .desktop-video {
+        display: none;
+    }
+    .mobile-video {
+        display: block;
+    }
+
+    .hero-text-content {
+        padding: 15px 25px; /* Reduz padding em mobile */
+        /* Outros ajustes se necessário para o layout mobile */
+    }
+
+    .hero-text-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text-content p {
+        font-size: 1.2rem;
+    }
+}
+    /* Ajuste do hero-content para o vídeo vertical */
+    .hero-content {
+        padding: 20px; /* Reduz padding em mobile */
+        /* Outros ajustes se necessário para o layout mobile */
+    }
+
+    /* Se você quer que o vídeo mobile ocupe a altura total */
+    .hero-video {
+        width: 100%;
+        height: auto; /* Deixa a altura se ajustar à proporção 9:16 */
+        min-width: unset; /* Remove min-width se não for necessário */
+        min-height: unset; /* Remove min-height se não for necessário */
+    }
+
+/* Portfólio Section */
+.portfolio-section {
+    background-color: #fff;
+}
+
+.portfolio-categories {
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    background: #eee;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #ff6600;
+    color: #fff;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.portfolio-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+}
+
+.portfolio-item h3 {
+    padding: 15px 15px 5px;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.portfolio-item p {
+    padding: 0 15px 15px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 177.77%; /* 9:16 Aspect Ratio (16 / 9 * 100) */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+}
+
+/* About Section */
+.about-section {
+    background-color: #f9f9f9;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-text h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.8;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.skills-list li {
+    background: #eee;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.skills-list li i {
+    margin-right: 8px;
+    color: #ff6600;
+}
+
+blockquote {
+    font-style: italic;
+    margin: 30px 0;
+    padding: 15px 20px;
+    background: #e6e6e6;
+    border-left: 5px solid #ff6600;
+    color: #444;
+    border-radius: 5px;
+}
+
+blockquote cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+}
+
+
+/* Services Section */
+.services-section {
+    background-color: #fff;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.service-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+.service-item h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #f9f9f9;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+.contact-info {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-info i {
+    margin-right: 10px;
+    color: #ff6600;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: #333;
+    font-size: 1.8rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ff6600;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Esconder menu em mobile, você pode adicionar um menu hambúrguer com JS */
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav .logo {
+        margin-bottom: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+
+    .skills-list {
+        justify-content: center;
+    }
+}
